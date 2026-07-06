@@ -13,7 +13,7 @@ import {
 import FilterPanel from '../components/FilterPanel'
 import PageShell from '../components/PageShell'
 import { patogenosPrincipales, sensibilidadPorAntibiotico } from '../data/mockData'
-import { REAL_CHART_COLORS, REAL_PRIMARY } from '../theme/chartColors'
+import { REAL_CHART_COLORS, CHART_PRIMARY } from '../theme/chartColors'
 
 const GRID_STROKE = '#e0e0e0'
 
@@ -81,7 +81,7 @@ export default function SensibilidadDashboard() {
                       'Porcentaje',
                     ]}
                   />
-                  <Bar dataKey="porcentaje" fill={REAL_PRIMARY} radius={[2, 2, 0, 0]}>
+                  <Bar dataKey="porcentaje" fill={CHART_PRIMARY} radius={[2, 2, 0, 0]}>
                     <LabelList dataKey="label" position="top" style={{ fontSize: 11, fill: '#333' }} />
                   </Bar>
                 </BarChart>
@@ -110,7 +110,7 @@ export default function SensibilidadDashboard() {
                   <Bar dataKey="S. aureus" fill={REAL_CHART_COLORS[0]} />
                   <Bar dataKey="E. coli" fill={REAL_CHART_COLORS[1]} />
                   <Bar dataKey="K. pneumoniae" fill={REAL_CHART_COLORS[2]} />
-                  <Bar dataKey="P. aeruginosa" fill={REAL_CHART_COLORS[4]} />
+                  <Bar dataKey="P. aeruginosa" fill={REAL_CHART_COLORS[3]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

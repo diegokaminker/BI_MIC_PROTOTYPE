@@ -12,7 +12,7 @@ import {
 import FilterPanel from '../components/FilterPanel'
 import PageShell from '../components/PageShell'
 import { tendenciaMDRO } from '../data/mockData'
-import { REAL_CHART_COLORS, REAL_PRIMARY } from '../theme/chartColors'
+import { REAL_CHART_COLORS, CHART_THRESHOLD } from '../theme/chartColors'
 
 const GRID_STROKE = '#e0e0e0'
 
@@ -30,7 +30,7 @@ export default function TendenciaMDRODashboard() {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={tendenciaMDRO} margin={{ top: 20, right: 30, left: 10, bottom: 20 }}>
               <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} />
-              <ReferenceArea y1={8} y2={12} fill={REAL_PRIMARY} fillOpacity={0.12} />
+              <ReferenceArea y1={8} y2={12} fill={CHART_THRESHOLD} fillOpacity={0.15} />
               <XAxis dataKey="periodo" tick={{ fontSize: 12, fill: '#757575' }} />
               <YAxis
                 label={{ value: 'N° de aislamientos', angle: -90, position: 'insideLeft', offset: 10 }}
@@ -52,7 +52,7 @@ export default function TendenciaMDRODashboard() {
           </ResponsiveContainer>
         </div>
         <p className="legend-note">
-          Franja verde: umbral esperado configurable · Cada color representa un MDRO diferente
+          Franja naranja: umbral esperado configurable · Cada color representa un MDRO diferente
         </p>
       </div>
 

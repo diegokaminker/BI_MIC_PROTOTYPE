@@ -13,7 +13,7 @@ import {
 import FilterPanel from '../components/FilterPanel'
 import PageShell from '../components/PageShell'
 import { carbapenemasas, mecanismosPorMO } from '../data/mockData'
-import { REAL_CHART_COLORS, REAL_PRIMARY } from '../theme/chartColors'
+import { REAL_CHART_COLORS, CHART_PRIMARY } from '../theme/chartColors'
 
 const GRID_STROKE = '#e0e0e0'
 
@@ -68,7 +68,7 @@ export default function MecanismosDashboard() {
                       'Porcentaje',
                     ]}
                   />
-                  <Bar dataKey="porcentaje" fill={REAL_PRIMARY} radius={[2, 2, 0, 0]}>
+                  <Bar dataKey="porcentaje" fill={CHART_PRIMARY} radius={[2, 2, 0, 0]}>
                     <LabelList dataKey="label" position="top" style={{ fontSize: 11, fill: '#333' }} />
                   </Bar>
                 </BarChart>
@@ -102,7 +102,7 @@ export default function MecanismosDashboard() {
                   <Legend />
                   <Bar dataKey="blaKPC" name="blaKPC" fill={REAL_CHART_COLORS[0]} stackId="a" />
                   <Bar dataKey="blaNDM" name="blaNDM" fill={REAL_CHART_COLORS[1]} stackId="a" />
-                  <Bar dataKey="oxa48" name="OXA-48" fill={REAL_CHART_COLORS[4]} stackId="a" />
+                  <Bar dataKey="oxa48" name="OXA-48" fill={REAL_CHART_COLORS[2]} stackId="a" />
                 </BarChart>
               </ResponsiveContainer>
             </div>

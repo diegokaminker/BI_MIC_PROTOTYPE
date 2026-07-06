@@ -1,14 +1,17 @@
-/** Paleta de gráficos alineada con R.E.A.L (teal + tonos complementarios) */
+/** Paleta categórica de alto contraste para series de datos (sin verdes) */
 export const REAL_CHART_COLORS = [
-  '#26a69a',
-  '#00897b',
-  '#4db6ac',
-  '#80cbc4',
-  '#00796b',
-  '#5c6bc0',
-  '#ffa726',
-  '#ef5350',
+  '#2563eb', // azul
+  '#dc2626', // rojo
+  '#ea580c', // naranja
+  '#7c3aed', // violeta
+  '#c026d3', // fucsia
+  '#0369a1', // azul oscuro
+  '#b45309', // ámbar
+  '#be123c', // carmesí
 ]
 
-export const REAL_PRIMARY = '#26a69a'
-export const REAL_PRIMARY_DARK = '#00897b'
+/** Color principal para series únicas (barras simples) */
+export const CHART_PRIMARY = '#2563eb'
+
+/** Color para bandas de umbral en gráficos */
+export const CHART_THRESHOLD = '#d97706'

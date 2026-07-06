@@ -15,7 +15,7 @@ import {
 import FilterPanel from '../components/FilterPanel'
 import PageShell from '../components/PageShell'
 import { tendenciaVirus, positividadVirus } from '../data/mockData'
-import { REAL_CHART_COLORS, REAL_PRIMARY } from '../theme/chartColors'
+import { REAL_CHART_COLORS, CHART_PRIMARY } from '../theme/chartColors'
 
 const GRID_STROKE = '#e0e0e0'
 const virusKeys = ['Influenza A', 'Influenza B', 'RSV', 'SARS-CoV-2']
@@ -103,7 +103,7 @@ export default function VirusRespiratoriosDashboard() {
                       return [`${value}% (${p.positivos}/${p.testeados})`, 'Positividad']
                     }}
                   />
-                  <Bar dataKey="porcentaje" fill={REAL_PRIMARY} radius={[2, 2, 0, 0]}>
+                  <Bar dataKey="porcentaje" fill={CHART_PRIMARY} radius={[2, 2, 0, 0]}>
                     <LabelList dataKey="label" position="top" style={{ fontSize: 11, fill: '#333' }} />
                   </Bar>
                 </BarChart>
