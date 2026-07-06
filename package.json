@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --base /BI_MIC_PROTOTYPE/"
   },
   "dependencies": {
     "react": "^18.3.1",
