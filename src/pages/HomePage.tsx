@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import PageShell from '../components/PageShell'
 
 const dashboards = [
   {
@@ -29,14 +30,10 @@ const dashboards = [
 
 export default function HomePage() {
   return (
-    <>
-      <div className="page-header">
-        <h2>Dashboards REAL</h2>
-        <p>
-          Plataforma de Business Intelligence para análisis microbiológico.
-          Seleccione un dashboard para comenzar.
-        </p>
-      </div>
+    <PageShell
+      title="Dashboards"
+      subtitle="Panel de control de reportes epidemiológicos. Seleccione un dashboard para comenzar."
+    >
       <div className="home-grid">
         {dashboards.map((d) => (
           <Link key={d.to} to={d.to} className="home-card">
@@ -46,6 +43,6 @@ export default function HomePage() {
           </Link>
         ))}
       </div>
-    </>
+    </PageShell>
   )
 }

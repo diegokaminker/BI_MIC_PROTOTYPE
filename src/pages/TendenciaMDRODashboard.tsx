@@ -10,48 +10,40 @@ import {
   ReferenceArea,
 } from 'recharts'
 import FilterPanel from '../components/FilterPanel'
+import PageShell from '../components/PageShell'
 import { tendenciaMDRO } from '../data/mockData'
+import { REAL_CHART_COLORS, REAL_PRIMARY } from '../theme/chartColors'
 
-const MDRO_COLORS: Record<string, string> = {
-  MRSA: '#0f4c81',
-  CRE: '#dc2626',
-  'Pae-MDR': '#0d9488',
-  'Aba-MDR': '#d97706',
-  VRE: '#7c3aed',
-}
+const GRID_STROKE = '#e0e0e0'
 
-const mdroKeys = Object.keys(MDRO_COLORS)
+const mdroKeys = ['MRSA', 'CRE', 'Pae-MDR', 'Aba-MDR', 'VRE']
 
 export default function TendenciaMDRODashboard() {
   return (
-    <>
-      <div className="page-header">
-        <h2>Dashboard de tendencia de gérmenes resistentes</h2>
-        <p>
-          Visualización de microorganismos multirresistentes (MDRO) en el período seleccionado.
-        </p>
-      </div>
-
+    <PageShell
+      title="Dashboard de tendencia de gérmenes resistentes"
+      subtitle="Visualización de microorganismos multirresistentes (MDRO) en el período seleccionado."
+    >
       <div className="card">
         <div className="card-title">Tendencia de MDRO por período</div>
         <div className="chart-container">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={tendenciaMDRO} margin={{ top: 20, right: 30, left: 10, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <ReferenceArea y1={8} y2={12} fill="#0d9488" fillOpacity={0.12} />
-              <XAxis dataKey="periodo" tick={{ fontSize: 12 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke={GRID_STROKE} />
+              <ReferenceArea y1={8} y2={12} fill={REAL_PRIMARY} fillOpacity={0.12} />
+              <XAxis dataKey="periodo" tick={{ fontSize: 12, fill: '#757575' }} />
               <YAxis
                 label={{ value: 'N° de aislamientos', angle: -90, position: 'insideLeft', offset: 10 }}
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 12, fill: '#757575' }}
               />
               <Tooltip />
               <Legend />
-              {mdroKeys.map((key) => (
+              {mdroKeys.map((key, i) => (
                 <Line
                   key={key}
                   type="monotone"
                   dataKey={key}
-                  stroke={MDRO_COLORS[key]}
+                  stroke={REAL_CHART_COLORS[i % REAL_CHART_COLORS.length]}
                   strokeWidth={2}
                   dot={{ r: 4 }}
                 />
@@ -66,12 +58,12 @@ export default function TendenciaMDRODashboard() {
 
       <div className="card">
         <div className="card-title">Definiciones MDRO incluidas</div>
-        <table style={{ width: '100%', fontSize: '0.8125rem', borderCollapse: 'collapse' }}>
+        <table className="real-table">
           <thead>
-            <tr style={{ borderBottom: '2px solid var(--color-border)', textAlign: 'left' }}>
-              <th style={{ padding: '0.5rem' }}>Código</th>
-              <th style={{ padding: '0.5rem' }}>Microorganismo</th>
-              <th style={{ padding: '0.5rem' }}>Criterio</th>
+            <tr>
+              <th>Código</th>
+              <th>Microorganismo</th>
+              <th>Criterio</th>
             </tr>
           </thead>
           <tbody>
@@ -82,10 +74,10 @@ export default function TendenciaMDRODashboard() {
               { codigo: 'Aba-MDR', mo: 'Acinetobacter baumannii', criterio: '≥ 3/7 antibióticos R o I' },
               { codigo: 'VRE', mo: 'Enterococcus faecalis', criterio: 'Vancomicina R' },
             ].map((row) => (
-              <tr key={row.codigo} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                <td style={{ padding: '0.5rem', fontWeight: 600 }}>{row.codigo}</td>
-                <td style={{ padding: '0.5rem' }}>{row.mo}</td>
-                <td style={{ padding: '0.5rem', color: 'var(--color-text-muted)' }}>{row.criterio}</td>
+              <tr key={row.codigo}>
+                <td style={{ fontWeight: 600 }}>{row.codigo}</td>
+                <td>{row.mo}</td>
+                <td style={{ color: 'var(--color-text-muted)' }}>{row.criterio}</td>
               </tr>
             ))}
           </tbody>
@@ -93,6 +85,6 @@ export default function TendenciaMDRODashboard() {
       </div>
 
       <FilterPanel showGranularidad />
-    </>
+    </PageShell>
   )
 }
